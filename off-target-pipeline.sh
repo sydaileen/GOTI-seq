@@ -16,6 +16,42 @@ neg=$3
 
 # 1. Quality control
 
+# 1.1 pretrim
+
+echo "`date` : ${pos} start fastqc checking of raw data" >> ${LOG}/${pos}.pipeline.log
+fastqc ${WORK_DIR}/raw/${pos}_R1.fastq.gz ${WORK_DIR}/raw/${pos}_R2.fastq.gz -o ${WORK_DIR}/fastQC/pretrim
+echo "`date` : ${pos} finish fastqc checking of raw data" >> ${LOG}/${pos}.pipeline.log
+
+echo "`date` : ${neg} start fastqc checking of raw data" >> ${LOG}/${neg}.pipeline.log
+fastqc ${WORK_DIR}/raw/${neg}_R1.fastq.gz ${WORK_DIR}/raw/${neg}_R2.fastq.gz -o ${WORK_DIR}/fastQC/pretrim
+echo "`date` : ${neg} finish fastqc checking of raw data" >> ${LOG}/${neg}.pipeline.log
+
+# 1.2 trim (Alternative, parameters should be adjusted based on the report of previous step)
+
+echo "`date` : ${pos} start Trimmomatic trimming" >> ${LOG}/${pos}.pipeline.log
+java -jar Trimmomatic-0.36/trimmomatic-0.36.jar PE -threads 8 ${WORK_DIR}/raw/${pos}_R1.fastq.gz ${WORK_DIR}/raw/${pos}_R2.fastq.gz \
+	${WORK_DIR}/fastQC/trim/${pos}_1_paired.fastq.gz ${WORK_DIR}/fastQC/trim/${pos}_1_unpaired.fastq.gz \
+	${WORK_DIR}/fastQC/trim/${pos}_2_paired.fastq.gz ${WORK_DIR}/fastQC/trim/${pos}_2_unpaired.fastq.gz \
+	ILLUMINACLIP:Trimmomatic-0.36/adapters/TruSeq3-PE.fa:2:30:10 LEADING:5 TRAILING:5 MINLEN:70
+echo "`date` : ${pos} finish Trimmomatic trimming" >> ${LOG}/${pos}.pipeline.log
+
+echo "`date` : ${neg} start Trimmomatic trimming" >> ${LOG}/${neg}.pipeline.log
+java -jar Trimmomatic-0.36/trimmomatic-0.36.jar PE -threads 8 ${WORK_DIR}/raw/${neg}_R1.fastq.gz ${WORK_DIR}/raw/${neg}_R2.fastq.gz \
+	${WORK_DIR}/fastQC/trim/${neg}_1_paired.fastq.gz ${WORK_DIR}/fastQC/trim/${neg}_1_unpaired.fastq.gz \
+	${WORK_DIR}/fastQC/trim/${neg}_2_paired.fastq.gz ${WORK_DIR}/fastQC/trim/${neg}_2_unpaired.fastq.gz \
+	ILLUMINACLIP:Trimmomatic-0.36/adapters/TruSeq3-PE.fa:2:30:10 LEADING:5 TRAILING:5 MINLEN:70
+echo "`date` : ${neg} finish Trimmomatic trimming" >> ${LOG}/${neg}.pipeline.log
+
+# 1.3 posttrim (Alternative)
+
+echo "`date` : ${pos} start fastqc checking of clean data" >> ${LOG}/${pos}.pipeline.log
+fastqc ${WORK_DIR}/fastQC/trim/${pos}_1_paired.fastq.gz ${WORK_DIR}/fastQC/trim/${pos}_2_paired.fastq.gz -o ${WORK_DIR}/fastQC/posttrim
+echo "`date` : ${pos} finish fastqc checking of clean data" >> ${LOG}/${pos}.pipeline.log
+
+echo "`date` : ${neg} start fastqc checking of clean data" >> ${LOG}/${neg}.pipeline.log
+fastqc ${WORK_DIR}/fastQC/trim/${neg}_1_paired.fastq.gz ${WORK_DIR}/fastQC/trim/${neg}_2_paired.fastq.gz -o ${WORK_DIR}/fastQC/posttrim
+echo "`date` : ${neg} finish fastqc checking of clean data" >> ${LOG}/${neg}.pipeline.log
+
 # 2. mapping
 
 echo "`date` : start building index " >> ${LOG}/${pos}.pipleline.log
