@@ -2,10 +2,11 @@
 
 GOTI-seq is the bioinformatic pipeline for analyzing genome-wide sequencing data from GOTI experiments.
 
-Install
+## Install
 
-Requirements
+###### Requirements
 
+```
 The implement of GOTI-seq requires the following softwares installed on the system:
 
 fastQC (v0.11.3)
@@ -25,20 +26,27 @@ Or you can install all the softwares conda package manager (https://conda.io/min
 install required bioinformatics tools and packages in Bioconda (https://bioconda.github.io/).
 
 conda install -c bioconda fastqc trimmomatic bwa picard gatk strelka lofreq scalpel blast
+```
 
-Installing
+###### Installing
 
+```
 GOTI-seq is ready to use without any further setups in install.
 
 cd GOTI-seq/
 chmod +x GOTI-seq/*
 
-Usage
+```
+
+## Usage
+
+```
 sh off-target-pipeline.sh work_dir sample1 sample2
 
-arguments
+###### arguments
 work_dir the working directorty
 sample1 the name of tdTomato+ sequencing data
 sample2 the name of tdTomato- sequencing data
 
+```
 
