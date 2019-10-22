@@ -23,7 +23,7 @@ Scalpel (v0.5.3)
 Annovar (version 2016-02-01)
 NCBI BLAST+ (v2.2.29)
 
-Make sure these softwares are in the soft sub-directory of your working directory before the implement.
+Make sure these softwares are in the PATH environment before the implement.
 
 Or you can install the required softwares using conda package manager (https://conda.io/miniconda.html) to install required bioinformatics tools and packages in Bioconda (https://bioconda.github.io/)
 
@@ -36,7 +36,7 @@ conda install -c bioconda fastqc trimmomatic bwa samtools picard gatk lofreq str
 ```
 GOTI-seq is ready to use without any further setups in install.
 
-cp GOTI-seq
+cd GOTI-seq
 chmod +x *
 
 ```
@@ -44,7 +44,7 @@ chmod +x *
 ## Usage
 
 ```
-Before running the script, make sure the raw data are located in the "raw" sub-directory of your working directory.
+Before running the script, make sure the raw data are located in the "raw" sub-directory of working directory.
 
 mkdir fastQC mapping picard mutect lofreq strelka scalpel
 
