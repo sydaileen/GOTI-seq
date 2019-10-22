@@ -10,7 +10,7 @@ Detect off-target variants of genome editing tools
 
 The implement of GOTI-seq requires the following sofwares pre-installed on your systems:
 
-fastqQC (v0.11.3)
+fastQC (v0.11.3)
 Trimmomatic (v0.36)
 BWA (v0.7.12)
 Samtools (v1.3)
@@ -23,7 +23,7 @@ Scalpel (v0.5.3)
 Annovar (version 2016-02-01)
 NCBI BLAST+ (v2.2.29)
 
-Make sure these softwares are in your PATH before the implement.
+Make sure these softwares are in the soft sub-directory of your working directory before the implement.
 
 Or you can install the required softwares using conda package manager (https://conda.io/miniconda.html) to install required bioinformatics tools and packages in Bioconda (https://bioconda.github.io/)
 
@@ -44,6 +44,10 @@ chmod +x *
 ## Usage
 
 ```
+Before running the script, make sure the raw data are located in the "raw" sub-directory of your working directory.
+
+mkdir fastQC mapping picard mutect lofreq strelka scalpel
+
 sh off-target-pipeline.sh work_dir sample1 sample2
 
 work_dir the working directory
