@@ -13,6 +13,7 @@ The implement of GOTI-seq requires the following sofwares pre-installed on your 
 fastqQC (v0.11.3)
 Trimmomatic (v0.36)
 BWA (v0.7.12)
+samtools (v1.3)
 Picard-tools (v2.3.0)
 GATK (v3.5)
 Lofreq (v2.1.2)
@@ -25,7 +26,7 @@ Make sure these softwares are in your PATH before the implement.
 
 Or you can install the required softwares using conda package manager (https://conda.io/miniconda.html) to install required bioinformatics tools and packages in Bioconda (https://bioconda.github.io/)
 
-conda install -c bioconda fastqc trimmomatic bwa picard gatk lofreq strelka scalpel blast
+conda install -c bioconda fastqc trimmomatic bwa samtools picard gatk lofreq strelka scalpel blast
 
 ```
 
