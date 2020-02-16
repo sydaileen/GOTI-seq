@@ -25,7 +25,7 @@ NCBI BLAST+ (v2.2.29)
 
 Make sure these softwares are in the PATH environment before the implement.
 
-Or you can install the required softwares using conda package manager [https://conda.io/miniconda.html] to install required bioinformatics tools and packages in [Bioconda](https://bioconda.github.io/)
+Or you can install the required softwares using conda package manager [https://conda.io/miniconda.html] to install required bioinformatics tools and packages in [Bioconda](https://bioconda.github.io/).
 
 conda install -c bioconda fastqc trimmomatic bwa samtools picard gatk lofreq strelka scalpel blast
 
