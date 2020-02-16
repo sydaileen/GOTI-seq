@@ -50,3 +50,4 @@ work_dir the working directory
 sample1 the name of tdTomato+ sequencing data
 sample2 the name of tdTomato- sequencing data
 ```
+The readers can generate files in the example_data folder by running the demo.sh script directly.
