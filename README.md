@@ -5,7 +5,6 @@ Detect off-target variants of genome editing tools
 
 ##### Dependencies
 
-
 The implement of GOTI-seq requires the following sofwares pre-installed on your systems:
 
 [fastQC](https://www.bioinformatics.babraham.ac.uk/projects/fastqc/) (v0.11.3)
@@ -26,7 +25,6 @@ Make sure these softwares are in the PATH environment before the implement.
 Or you can install the required softwares using [conda](https://conda.io/miniconda.html) package manager to install required bioinformatics tools and packages in [Bioconda](https://bioconda.github.io/).
 
 conda install -c bioconda fastqc trimmomatic bwa samtools picard gatk lofreq strelka scalpel blast
-
 
 
 ##### Installing
