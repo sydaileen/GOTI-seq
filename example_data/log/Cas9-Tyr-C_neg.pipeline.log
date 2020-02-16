@@ -1,0 +1,18 @@
+Tue Oct 22 16:41:41 CST 2019 : Cas9-Tyr-C_neg start fastqc checking of raw data
+Tue Oct 22 16:43:25 CST 2019 : Cas9-Tyr-C_neg finish fastqc checking of raw data
+Tue Oct 22 16:45:36 CST 2019 : Cas9-Tyr-C_neg start Trimmomatic trimming
+Tue Oct 22 16:48:02 CST 2019 : Cas9-Tyr-C_neg finish Trimmomatic trimming
+Tue Oct 22 16:49:45 CST 2019 : Cas9-Tyr-C_neg start fastqc checking of clean data
+Tue Oct 22 16:51:32 CST 2019 : Cas9-Tyr-C_neg finish fastqc checking of clean data
+Tue Oct 22 19:04:28 CST 2019 : Cas9-Tyr-C_neg start mapping 
+Tue Oct 22 19:08:45 CST 2019 : Cas9-Tyr-C_neg finish mapping
+Tue Oct 22 19:08:46 CST 2019 : Cas9-Tyr-C_neg start reordering bam
+Tue Oct 22 19:08:47 CST 2019 : Cas9-Tyr-C_neg finish reordering sam
+Tue Oct 22 19:08:47 CST 2019 : Cas9-Tyr-C_neg start sorting bam
+Tue Oct 22 19:08:48 CST 2019 : Cas9-Tyr-C_neg finish sorting sam
+Tue Oct 22 19:08:49 CST 2019 : Cas9-Tyr-C_neg start assigning read group
+Tue Oct 22 19:08:50 CST 2019 : Cas9-Tyr-C_neg finish assigning read group
+Tue Oct 22 19:08:50 CST 2019 : Cas9-Tyr-C_neg start marking duplicates
+Tue Oct 22 19:08:51 CST 2019 : Cas9-Tyr-C_neg finish marking duplicates
+Tue Oct 22 19:08:52 CST 2019 : Cas9-Tyr-C_neg start building bam index
+Tue Oct 22 19:08:52 CST 2019 : Cas9-Tyr-C_neg finish building bam index

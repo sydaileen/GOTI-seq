@@ -169,27 +169,32 @@ awk '$7=="PASS" {print $0}' ${WORK_DIR}/strelka/${pos}/results/variants/somatic.
 
 gunzip ${WORK_DIR}/lofreq/${pos}/somatic_final.snvs.vcf.gz
 
-perl filter_overlap.pl ${WORK_DIR}/lofreq/${pos}/somatic_final.snvs.vcf ${WORK_DIR}/strelka/${pos}/results/variants/somatic.snvs.pass.vcf ${WORK_DIR}/mutect/${pos}/output.pass.snv.vcf ${WORK_DIR}/${pos}.snv.overlap.vcf
-perl filter_overlap.pl ${WORK_DIR}/scalpel/${pos}/somatic_final.indels.vcf ${WORK_DIR}/strelka/${pos}/results/variants/somatic.indels.pass.vcf ${WORK_DIR}/mutect/${pos}/output.pass.indel.vcf ${pos}.indel.overlap.vcf
+perl filter_overlap.pl ${WORK_DIR}/lofreq/${pos}/somatic_final.snvs.vcf ${WORK_DIR}/strelka/${pos}/results/variants/somatic.snvs.pass.vcf ${WORK_DIR}/mutect/${pos}/output.pass.snv.vcf ${WORK_DIR}/result/${pos}.snv.overlap.vcf
+perl filter_overlap.pl ${WORK_DIR}/scalpel/${pos}/somatic_final.indels.vcf ${WORK_DIR}/strelka/${pos}/results/variants/somatic.indels.pass.vcf ${WORK_DIR}/mutect/${pos}/output.pass.indel.vcf ${WORK_DIR}/result/${pos}.indel.overlap.vcf
 
 # Filtration
 
 # ${SOFT}/annotate_variation.pl -buildver mm10 -downdb -webfrom annovar refGene ${WORK_DIR}/ref/mousedb/
-${SOFT}/annovar/table_annovar.pl  ${WORK_DIR}/${pos}.snv.overlap.vcf ${WORK_DIR}/ref/mousedb -buildver mm10 -out ${WORK_DIR}/${pos}.snv.overlap.vcf.anno -remove -protocol refGene -operation g -nastring . -vcfinput
+${SOFT}/annovar/table_annovar.pl  ${WORK_DIR}/result/${pos}.snv.overlap.vcf ${WORK_DIR}/ref/mousedb -buildver mm10 -out ${WORK_DIR}/result/${pos}.snv.overlap.vcf.anno -remove -protocol refGene -operation g -nastring . -vcfinput
 
-perl awk_anno.pl ${WORK_DIR}/${pos}.snv.overlap.vcf.anno.mm10_multianno.txt ${WORK_DIR}/${pos}.anno.tsv
-awk '$10>0.1 {print $0}' ${WORK_DIR}/${pos}.anno.tsv > ${WORK_DIR}/${pos}.anno.0.1.tsv
+perl awk_anno.pl ${WORK_DIR}/result/${pos}.snv.overlap.vcf.anno.mm10_multianno.txt ${WORK_DIR}/result/${pos}.snv.anno.tsv
+awk '$10>0.1 {print $0}' ${WORK_DIR}/result/${pos}.snv.anno.tsv > ${WORK_DIR}/result/${pos}.snv.anno.0.1.tsv
+
+${SOFT}/annovar/table_annovar.pl  ${WORK_DIR}/result/${pos}.indel.overlap.vcf ${WORK_DIR}/ref/mousedb -buildver mm10 -out ${WORK_DIR}/result/${pos}.indel.overlap.vcf.anno -remove -protocol refGene -operation g -nastring . -vcfinput
+
+perl awk_anno.pl ${WORK_DIR}/result/${pos}.indel.overlap.vcf.anno.mm10_multianno.txt ${WORK_DIR}/result/${pos}.indel.anno.tsv
+awk '$10>0.1 {print $0}' ${WORK_DIR}/result/${pos}.indel.anno.tsv > ${WORK_DIR}/result/${pos}.indel.anno.0.1.tsv
 
 # Sequence comparison with on-target site
 
-cat ${WORK_DIR}/${pos}.anno.0.1.tsv | while read line
+cat ${WORK_DIR}/result/${pos}.snv.anno.0.1.tsv | while read line
 do
 	chr=$(echo $line | cut -d" " -f 1)
 	loci=$(echo $line | cut -d" " -f 2)
 	start=`expr $loci - 17`
 	end=`expr $loci + 5`
-	${SOFT}/samtools faidx ${REFFILE} $chr:${start}-${end} >> ${WORK_DIR}/${pos}.anno.0.1.tsv.fasta
+	${SOFT}/samtools faidx ${REFFILE} $chr:${start}-${end} >> ${WORK_DIR}/result/${pos}.anno.0.1.tsv.fasta
 done
 
 ${SOFT}/makeblastdb -in ${WORK_DIR}/sgRNA.fasta -dbtype nucl -parse_seqids
-${SOFT}/blastn -db ${WORK_DIR}/sgRNA.fasta -query ${WORK_DIR}/${pos}.anno.0.1.tsv.fasta -dust no -outfmt 6 -word_size=7 -out ${WORK_DIR}/${pos}.sgRNA.blast.out
+${SOFT}/blastn -db ${WORK_DIR}/sgRNA.fasta -query ${WORK_DIR}/result/${pos}.anno.0.1.tsv.fasta -dust no -outfmt 6 -word_size=7 -out ${WORK_DIR}/result/${pos}.sgRNA.blast.out

@@ -1,0 +1,28 @@
+Tue Oct 22 16:39:50 CST 2019 : Cas9-Tyr-C_pos start fastqc checking of raw data
+Tue Oct 22 16:41:41 CST 2019 : Cas9-Tyr-C_pos finish fastqc checking of raw data
+Tue Oct 22 16:43:25 CST 2019 : Cas9-Tyr-C_pos start Trimmomatic trimming
+Tue Oct 22 16:45:36 CST 2019 : Cas9-Tyr-C_pos finish Trimmomatic trimming
+Tue Oct 22 16:48:02 CST 2019 : Cas9-Tyr-C_pos start fastqc checking of clean data
+Tue Oct 22 16:49:45 CST 2019 : Cas9-Tyr-C_pos finish fastqc checking of clean data
+Tue Oct 22 22:00:21 CST 2019 : Cas9-Tyr-C_pos start mapping 
+Tue Oct 22 22:13:16 CST 2019 : Cas9-Tyr-C_pos finish mapping
+Tue Oct 22 22:37:21 CST 2019 : Cas9-Tyr-C_pos start reordering bam
+Tue Oct 22 22:39:32 CST 2019 : Cas9-Tyr-C_pos finish reordering sam
+Tue Oct 22 22:41:52 CST 2019 : Cas9-Tyr-C_pos start sorting bam
+Tue Oct 22 22:44:43 CST 2019 : Cas9-Tyr-C_pos finish sorting sam
+Tue Oct 22 22:47:35 CST 2019 : Cas9-Tyr-C_pos start assigning read group
+Tue Oct 22 22:49:53 CST 2019 : Cas9-Tyr-C_pos finish assigning read group
+Tue Oct 22 22:52:18 CST 2019 : Cas9-Tyr-C_pos start marking duplicates
+Tue Oct 22 22:55:40 CST 2019 : Cas9-Tyr-C_pos finish marking duplicates
+Tue Oct 22 22:59:08 CST 2019 : Cas9-Tyr-C_pos start building bam index
+Tue Oct 22 22:59:34 CST 2019 : Cas9-Tyr-C_pos finish building bam index
+Tue Oct 22 22:59:58 CST 2019 : Cas9-Tyr-C_pos start mutect2 variant calling
+Wed Oct 23 10:02:26 CST 2019 : Cas9-Tyr-C_pos finish mutect2 variant calling
+Wed Oct 23 10:02:26 CST 2019 : Cas9-Tyr-C_pos start lofreq variant calling
+Wed Oct 23 11:15:06 CST 2019 : Cas9-Tyr-C_pos finish lofreq variant calling
+Wed Oct 23 11:15:06 CST 2019 : Cas9-Tyr-C_pos start strelka variant calling
+Wed Oct 23 11:27:36 CST 2019 : Cas9-Tyr-C_pos finish strelka variant calling
+Wed Oct 23 11:27:36 CST 2019 : Cas9-Tyr-C_pos start scalpel variant calling
+Wed Oct 23 11:33:50 CST 2019 : Cas9-Tyr-C_pos finish scalpel variant calling
+Wed Oct 23 18:25:46 CST 2019 : Cas9-Tyr-C_pos start scalpel variant calling
+Wed Oct 23 18:34:01 CST 2019 : Cas9-Tyr-C_pos finish scalpel variant calling
